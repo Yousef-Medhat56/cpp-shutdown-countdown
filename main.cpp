@@ -6,6 +6,7 @@
 using namespace std;
 
 int readPositiveInt(string message); // read a positive integer from the user
+void printErrorMsg(string error);    // print error message
 
 int main()
 {
@@ -44,6 +45,7 @@ int readPositiveInt(string message)
     // check that the input is integer
     while (cout << message && !(cin >> input))
     {
+        printErrorMsg("Please enter a valid input");
         cin.clear();                                                   // clear bad input flag
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard input
     }
@@ -53,6 +55,15 @@ int readPositiveInt(string message)
         return input;
     else
     {
+        printErrorMsg("The input can't be negative");
         return readPositiveInt(message);
     }
+}
+
+void printErrorMsg(string error)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 12); // change text color to red
+    cout << error << endl;
+    SetConsoleTextAttribute(hConsole, 15); // change text color to white
 }
