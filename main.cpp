@@ -1,18 +1,19 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
-#include <chrono>
-#include <thread>
+#include <limits>
 using namespace std;
 
 void printHeader();                  // print the program header in the terminal
 int readPositiveInt(string message); // read a positive integer from the user
-void printErrorMsg(string error);    // priint error message
+void printErrorMsg(string error);    // print error message
 
 int main()
 {
     int minutes_to_shutdown;
     int seconds_to_shutdown;
+
+    printHeader();
 
     minutes_to_shutdown = readPositiveInt("- How many minutes to shutdown the pc: ");
     seconds_to_shutdown = minutes_to_shutdown * 60;
@@ -23,13 +24,13 @@ int main()
         if (seconds_to_shutdown > 60)
         {
             cout << "The pc will shutdown after " << seconds_to_shutdown / 60 << " minutes" << endl;
-            this_thread::sleep_for(chrono::seconds(60)); // sleep for 60 seconds
+            Sleep(60000); // sleep for 60 seconds
             seconds_to_shutdown -= 60;
         }
         else
         {
             cout << "The pc will shutdown after " << seconds_to_shutdown << " seconds" << endl;
-            this_thread::sleep_for(chrono::seconds(1)); // sleep for 1 second
+            Sleep(1000); // sleep for 1 second
             seconds_to_shutdown--;
         }
 
@@ -37,7 +38,7 @@ int main()
         printHeader();
     }
 
-    // system("C:\\Windows\\System32\\shutdown /s");
+    system("C:\\Windows\\System32\\shutdown /s");
     return 0;
 }
 
