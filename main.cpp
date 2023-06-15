@@ -5,8 +5,9 @@
 #include <thread>
 using namespace std;
 
+void printHeader();                  // print the program header in the terminal
 int readPositiveInt(string message); // read a positive integer from the user
-void printErrorMsg(string error);    // print error message
+void printErrorMsg(string error);    // priint error message
 
 int main()
 {
@@ -33,10 +34,18 @@ int main()
         }
 
         system("cls");
+        printHeader();
     }
 
     // system("C:\\Windows\\System32\\shutdown /s");
     return 0;
+}
+
+void printHeader()
+{
+    cout << "==================================\n";
+    cout << "\tShutdown countdown\t" << endl;
+    cout << "==================================\n\n";
 }
 
 int readPositiveInt(string message)
