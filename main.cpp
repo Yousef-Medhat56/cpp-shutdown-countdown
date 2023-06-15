@@ -20,6 +20,8 @@ int main()
 
     while (seconds_to_shutdown > 0)
     {
+        system("cls");
+        printHeader();
         // if there is more than 1 minute until shutdown
         if (seconds_to_shutdown > 60)
         {
@@ -33,9 +35,6 @@ int main()
             Sleep(1000); // sleep for 1 second
             seconds_to_shutdown--;
         }
-
-        system("cls");
-        printHeader();
     }
 
     system("C:\\Windows\\System32\\shutdown /s");
